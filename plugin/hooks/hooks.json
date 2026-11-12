@@ -1,0 +1,195 @@
+{
+  "description": "Sends every Claude Code event to the status LED with curl (POST /hook). The LED evaluates it itself.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl.exe",
+            "args": [
+              "-s",
+              "-m",
+              "3",
+              "-F",
+              "hook=@-;filename=hook.json;type=application/json",
+              "${user_config.led_url}/hook"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl.exe",
+            "args": [
+              "-s",
+              "-m",
+              "3",
+              "-F",
+              "hook=@-;filename=hook.json;type=application/json",
+              "${user_config.led_url}/hook"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl.exe",
+            "args": [
+              "-s",
+              "-m",
+              "3",
+              "-F",
+              "hook=@-;filename=hook.json;type=application/json",
+              "${user_config.led_url}/hook"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl.exe",
+            "args": [
+              "-s",
+              "-m",
+              "3",
+              "-F",
+              "hook=@-;filename=hook.json;type=application/json",
+              "${user_config.led_url}/hook"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl.exe",
+            "args": [
+              "-s",
+              "-m",
+              "3",
+              "-F",
+              "hook=@-;filename=hook.json;type=application/json",
+              "${user_config.led_url}/hook"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl.exe",
+            "args": [
+              "-s",
+              "-m",
+              "3",
+              "-F",
+              "hook=@-;filename=hook.json;type=application/json",
+              "${user_config.led_url}/hook"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl.exe",
+            "args": [
+              "-s",
+              "-m",
+              "3",
+              "-F",
+              "hook=@-;filename=hook.json;type=application/json",
+              "${user_config.led_url}/hook"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PermissionDenied": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl.exe",
+            "args": [
+              "-s",
+              "-m",
+              "3",
+              "-F",
+              "hook=@-;filename=hook.json;type=application/json",
+              "${user_config.led_url}/hook"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl.exe",
+            "args": [
+              "-s",
+              "-m",
+              "3",
+              "-F",
+              "hook=@-;filename=hook.json;type=application/json",
+              "${user_config.led_url}/hook"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "curl.exe",
+            "args": [
+              "-s",
+              "-m",
+              "3",
+              "-F",
+              "hook=@-;filename=hook.json;type=application/json",
+              "${user_config.led_url}/hook"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}

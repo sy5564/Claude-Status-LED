@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claude-LED Flasher</title>
+<script type="module" src="https://unpkg.com/esp-web-tools@10.4.0/dist/web/install-button.js?module"></script>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--text:#1f1e1c;--muted:#6f6b63;--line:#e5e1d8;--accent:#d97757;--warn-bg:#fdf1e7;--warn:#9a4a1d;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1a18;--card:#262522;--text:#efece6;--muted:#a39e94;--line:#3a3833;--warn-bg:#3a2a1f;--warn:#f0b48e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1b1a18;--card:#262522;--text:#efece6;--muted:#a39e94;--line:#3a3833;--warn-bg:#3a2a1f;--warn:#f0b48e;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px 16px 48px}
+header{display:flex;align-items:center;gap:12px;padding:12px 0 18px}
+header h1{font-size:21px;margin:0}
+header p{margin:0;color:var(--muted);font-size:13px}
+.logo{width:40px;height:40px;border-radius:12px;background:var(--accent);display:grid;place-items:center;flex:none}
+.logo span{width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 12px #fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:0 0 14px}
+.card h2{font-size:15px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.n{background:var(--accent);color:#fff;border-radius:50%;width:22px;height:22px;display:grid;place-items:center;font-size:12px;flex:none}
+p{margin:6px 0}
+.muted{color:var(--muted);font-size:13.5px}
+ul{margin:6px 0;padding-left:20px}
+li{margin:3px 0}
+.install{text-align:center;padding:26px 18px}
+.install button{font:inherit;font-size:17px;font-weight:600;background:var(--accent);color:#fff;border:0;border-radius:11px;padding:14px 30px;cursor:pointer}
+.install button:hover{filter:brightness(1.06)}
+.note{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:12px 14px;font-size:14px;text-align:left}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:14px}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:12.5px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{text-align:left;padding:8px 6px;border-top:1px solid var(--line)}
+th{color:var(--muted);font-weight:500;border-top:0}
+a{color:var(--accent)}
+code{background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:0 5px;font-size:13px}
+esp-web-install-button{--esp-tools-button-color:#d97757;--mdc-theme-primary:#d97757}
+header{flex-wrap:wrap}
+.lang{margin-left:auto;display:inline-flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--card)}
+.lang button{font:inherit;font-size:12px;font-weight:600;border:0;background:none;color:var(--muted);padding:3px 9px;border-radius:999px;cursor:pointer}
+.lang button.on{background:var(--accent);color:#fff}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="logo"><span></span></div>
+  <div><h1>Claude Status-LED</h1><p data-i="sub"></p></div>
+  <div class="lang"><button type="button" data-l="en">EN</button><button type="button" data-l="de">DE</button></div>
+</header>
+
+<section class="card">
+  <h2><span class="n">1</span><span data-i="s1"></span></h2>
+  <p data-i="s1a"></p>
+  <p class="muted" data-i="s1b"></p>
+</section>
+
+<section class="card install">
+  <h2 style="justify-content:center"><span class="n">2</span><span data-i="s2"></span></h2>
+  <p class="muted" style="margin-bottom:16px" data-i="s2a"></p>
+  <esp-web-install-button manifest="manifest.json">
+    <button slot="activate" data-i="install"></button>
+    <div slot="unsupported" class="note" data-i="unsupported"></div>
+    <div slot="not-allowed" class="note" data-i="notallowed"></div>
+  </esp-web-install-button>
+  <div class="chips"><span>ESP32</span><span>ESP32-S2</span><span>ESP32-S3</span><span>ESP32-C3</span><span>ESP32-C6</span><span>ESP8266</span></div>
+</section>
+
+<section class="card">
+  <h2><span class="n">3</span><span data-i="s3"></span></h2>
+  <ul>
+    <li data-i="s3a"></li>
+    <li data-i="s3b"></li>
+    <li data-i="s3c"></li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2 data-i="upd"></h2>
+  <p class="muted" data-i="upd_a"></p>
+  <table>
+    <tr><th>Chip</th><th data-i="upd_file"></th></tr>
+    <tr><td>ESP32</td><td><a href="bin/esp32-update.bin" download>esp32-update.bin</a></td></tr>
+    <tr><td>ESP32-S2</td><td><a href="bin/esp32s2-update.bin" download>esp32s2-update.bin</a></td></tr>
+    <tr><td>ESP32-S3</td><td><a href="bin/esp32s3-update.bin" download>esp32s3-update.bin</a></td></tr>
+    <tr><td>ESP32-C3</td><td><a href="bin/esp32c3-update.bin" download>esp32c3-update.bin</a></td></tr>
+    <tr><td>ESP32-C6</td><td><a href="bin/esp32c6-update.bin" download>esp32c6-update.bin</a></td></tr>
+    <tr><td>ESP8266</td><td><a href="bin/esp8266-update.bin" download>esp8266-update.bin</a></td></tr>
+  </table>
+  <p class="muted" data-i="upd_b"></p>
+</section>
+<p class="muted" style="text-align:center" data-i="foot"></p>
+</main>
+<script>
+const I18N={
+en:{
+ sub:'Install the firmware – right from your browser',
+ s1:'Connect the ESP via USB',
+ s1a:'Use a USB cable with data lines (charge-only cables do not work).',
+ s1b:'No device found? Install the driver for the USB chip (usually CP210x or CH340). On boards with USB directly on the chip (e.g. ESP32-C3 SuperMini, S2 mini), hold the <b>BOOT</b> button while plugging in.',
+ s2:'Install',s2a:'The chip is detected automatically and the matching firmware is installed.',install:'Install firmware',
+ unsupported:'This browser cannot access USB devices. Please use <b>Chrome</b> or <b>Edge</b> on a computer (not Firefox, Safari or a phone).',
+ notallowed:'This page must be opened via <code>https</code>. Use the online version: <a href="https://sy5564.github.io/Claude-Status-LED/">sy5564.github.io/Claude-Status-LED</a>',
+ s3:'Set up Wi-Fi',
+ s3a:'After the restart, the onboard LED pulses <b>purple</b> (if your board has one in the usual place).',
+ s3b:'Connect your phone to the network <b>Claude-LED-XXXX</b>. The setup page opens by itself, otherwise open <code>http://192.168.4.1</code>.',
+ s3c:'Choose your Wi-Fi, enter the password, select your LED board and tap <b>Connect</b>. Afterwards you will see the address of the settings page.',
+ upd:'Updates',upd_a:'Later you no longer need USB: upload the matching file on the LED settings page under <b>Firmware update</b>.',upd_file:'Update file',
+ upd_b:'The settings page shows which chip is installed under <b>Status → Firmware</b>.',
+ foot:'Instructions and Claude Code integration: <a href="https://github.com/sy5564/Claude-Status-LED">github.com/sy5564/Claude-Status-LED</a><br>Unofficial fan project, not affiliated with Anthropic.'
+},
+de:{
+ sub:'Firmware installieren – direkt aus dem Browser',
+ s1:'ESP per USB anschließen',
+ s1a:'Ein USB-Kabel mit Datenleitung verwenden (reine Ladekabel funktionieren nicht).',
+ s1b:'Wird kein Gerät gefunden: Treiber für den USB-Chip installieren (meist CP210x oder CH340). Bei Boards mit USB direkt am Chip (z. B. ESP32-C3 SuperMini, S2 mini) beim Einstecken den <b>BOOT</b>-Knopf gedrückt halten.',
+ s2:'Installieren',s2a:'Der Chip wird automatisch erkannt und die passende Firmware aufgespielt.',install:'Firmware installieren',
+ unsupported:'Dieser Browser kann nicht auf USB-Geräte zugreifen. Bitte <b>Chrome</b> oder <b>Edge</b> am Computer verwenden (nicht Firefox, Safari oder Handy).',
+ notallowed:'Die Seite muss über <code>https</code> geöffnet werden. Nutze die Online-Version: <a href="https://sy5564.github.io/Claude-Status-LED/">sy5564.github.io/Claude-Status-LED</a>',
+ s3:'WLAN einrichten',
+ s3a:'Nach dem Neustart pulsiert die Onboard-LED <b>lila</b> (sofern dein Board eine an der üblichen Stelle hat).',
+ s3b:'Mit dem Handy das WLAN <b>Claude-LED-XXXX</b> verbinden. Die Einrichtungsseite öffnet sich von selbst, sonst <code>http://192.168.4.1</code> aufrufen.',
+ s3c:'WLAN wählen, Passwort eingeben, LED-Board wählen und <b>Verbinden</b> tippen. Danach siehst du die Adresse der Einstellungsseite.',
+ upd:'Updates',upd_a:'Später brauchst du kein USB mehr: In der Einstellungsseite der LED unter <b>Firmware-Update</b> die passende Datei hochladen.',upd_file:'Update-Datei',
+ upd_b:'Welcher Chip verbaut ist, zeigt die Einstellungsseite unter <b>Status → Firmware</b>.',
+ foot:'Anleitung und Claude-Code-Anbindung: <a href="https://github.com/sy5564/Claude-Status-LED">github.com/sy5564/Claude-Status-LED</a><br>Inoffizielles Fanprojekt, nicht von Anthropic.'
+}};
+let LANG=(()=>{try{const l=localStorage.getItem('lang');if(l==='en'||l==='de')return l}catch(e){}
+  return (navigator.language||'en').toLowerCase().startsWith('de')?'de':'en'})();
+function apply(){document.documentElement.lang=LANG;
+  document.querySelectorAll('[data-i]').forEach(e=>e.innerHTML=I18N[LANG][e.dataset.i]||I18N.en[e.dataset.i]);
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===LANG))}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{LANG=b.dataset.l;try{localStorage.setItem('lang',LANG)}catch(e){}apply()});
+apply();
+</script>
+</body>
+</html>

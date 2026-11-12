@@ -1,0 +1,31 @@
+Claude Status-LED - License
+
+Copyright (c) 2026 sy5564. All rights reserved.
+
+1. Permission to use. You may download and use the firmware files
+   (*.bin), the flash page, the hooks template and the Claude Code plugin
+   published in this repository free of charge, for private and commercial
+   purposes, on your own devices.
+
+2. Restrictions. Without prior written permission from the copyright holder
+   you may not:
+   a) redistribute, sell, rent or publish the firmware files, in whole or in
+      part, outside of this repository;
+   b) modify, decompile, disassemble or reverse engineer the firmware,
+      except to the extent that applicable law or a license of a third-party
+      component (see THIRD_PARTY_NOTICES.md) expressly permits it.
+
+3. Third-party components. The firmware contains third-party software that
+   is licensed under its own terms (see THIRD_PARTY_NOTICES.md). Nothing in
+   this license limits the rights you have under those licenses.
+
+4. No warranty. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+   KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+   NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+   USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+"Claude" is a trademark of Anthropic, PBC. This is an unofficial fan project
+and is not affiliated with or endorsed by Anthropic.

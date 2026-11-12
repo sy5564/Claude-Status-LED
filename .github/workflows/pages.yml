@@ -1,0 +1,41 @@
+# Publishes the flash page (folder flasher/) on GitHub Pages:
+# https://sy5564.github.io/Claude-Status-LED/
+# One-time setup: Settings -> Pages -> Source: "GitHub Actions"
+name: Publish flash page
+
+on:
+  push:
+    branches: [main]
+    paths: ["flasher/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Collect the page and the firmware files
+        run: |
+          mkdir -p _site
+          cp flasher/index.html flasher/manifest.json _site/
+          cp -r flasher/bin _site/bin
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

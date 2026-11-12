@@ -1,0 +1,11 @@
+{
+  "name": "led-statuslight",
+  "owner": { "name": "sy5564" },
+  "plugins": [
+    {
+      "name": "statuslight",
+      "source": "./plugin",
+      "description": "Shows the state of Claude Code on an ESP status LED (working, waiting for approval, done)."
+    }
+  ]
+}
