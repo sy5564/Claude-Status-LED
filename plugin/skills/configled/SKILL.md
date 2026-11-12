@@ -14,7 +14,7 @@ Address given: $ARGUMENTS
 
 Reply in the user's language, short and friendly. Proceed as follows:
 
-1. **Determine the address.** If no address is given above (empty, or still the placeholder with a dollar sign), ask for the IP address or name of the LED. The LED setup page shows both after the Wi-Fi setup, e.g. `192.168.178.42` or `claude-led.local`.
+1. **Determine the address.** If no address is given above (empty, or still the placeholder with a dollar sign), ask for the IP address or name of the LED. The LED setup page shows both after the Wi-Fi setup, e.g. `192.168.XXX.XXX` or `claude-led.local`.
 2. **Normalize it.** Add `http://` if missing. Remove a trailing `/` and any path (e.g. `/hook`, `/led`). Result: `http://<host>`.
 3. **Test the connection** with `curl.exe -s -m 4 "<address>/led?s=done&sid=configled"` (on macOS/Linux use `curl` instead of `curl.exe`).
    - Response `ok`: the LED now briefly shows "Done". Tell the user.

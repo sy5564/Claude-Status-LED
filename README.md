@@ -89,29 +89,11 @@ The hooks take effect immediately.
 /plugin install statuslight@led-statuslight
 ```
 
-The plugin uses `http://claude-led.local` by default. Set a different address with `/statuslight:configled 192.168.178.50` or via `/plugin` → statuslight → Configure.
+The plugin uses `http://claude-led.local` by default. Set a different address with `/statuslight:configled 192.168.XXX.XXX` or via `/plugin` → statuslight → Configure.
 
 > In the Claude desktop app, a locally added plugin was registered but not fully installed in our tests, so its hooks did not run. Use option A there.
 
 Use **only one** of the two options, otherwise every event arrives twice.
-
-### Test
-
-Send a message in Claude Code. The LED switches to "Working" and to "Done" at the end. On the settings page, **Status → Active sessions** lists every session that sends events.
-
-### Which event triggers which state
-
-| Claude Code hook | State |
-|---|---|
-| SessionStart, SessionEnd, PermissionDenied | Ready |
-| UserPromptSubmit, PreToolUse, PostToolUse, PostToolUseFailure | Working |
-| PermissionRequest | Waiting for approval |
-| Stop | Done |
-| StopFailure | Error |
-
-Several Claude sessions are tracked separately. The most important state is shown: approval > error > done > working > ready. While an approval is pending, other tools (e.g. from subagents) do not override the red.
-
-**Known limitations:** there is no event for a granted approval. The LED stays red until the approved tool has finished. After rejecting or pressing Ctrl+C, it stays red until your next input.
 
 ## 4. Settings page
 

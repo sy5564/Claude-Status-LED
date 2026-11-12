@@ -89,29 +89,11 @@ Die Hooks wirken sofort.
 /plugin install statuslight@led-statuslight
 ```
 
-Das Plugin nutzt standardmäßig `http://claude-led.local`. Eine andere Adresse setzt du mit `/statuslight:configled 192.168.178.50` oder über `/plugin` → statuslight → Configure.
+Das Plugin nutzt standardmäßig `http://claude-led.local`. Eine andere Adresse setzt du mit `/statuslight:configled 192.168.XXX.XXX` oder über `/plugin` → statuslight → Configure.
 
 > In der Claude-Desktop-App wurde ein lokal eingetragenes Plugin bei uns registriert, aber nicht vollständig installiert. Die Hooks liefen nicht. Nutze dort Variante A.
 
 Nutze **nur eine** der beiden Varianten, sonst kommt jedes Ereignis doppelt an.
-
-### Testen
-
-Schick in Claude Code eine Nachricht. Die LED springt auf „Arbeitet“ und am Ende auf „Fertig“. Auf der Einstellungsseite listet **Status → Aktive Sessions** jede Sitzung, die Ereignisse sendet.
-
-### Welches Ereignis welchen Zustand auslöst
-
-| Claude-Code-Hook | Zustand |
-|---|---|
-| SessionStart, SessionEnd, PermissionDenied | Bereit |
-| UserPromptSubmit, PreToolUse, PostToolUse, PostToolUseFailure | Arbeitet |
-| PermissionRequest | Wartet auf Freigabe |
-| Stop | Fertig |
-| StopFailure | Fehler |
-
-Mehrere Claude-Sessions werden getrennt verfolgt. Angezeigt wird der wichtigste Zustand: Freigabe > Fehler > Fertig > Arbeitet > Bereit. Solange eine Freigabe offen ist, überschreiben andere Werkzeuge (z. B. von Subagents) das Rot nicht.
-
-**Bekannte Grenzen:** Für eine erteilte Freigabe gibt es kein eigenes Ereignis. Die LED bleibt rot, bis das freigegebene Werkzeug fertig ist. Nach Ablehnen oder Strg+C bleibt sie rot bis zur nächsten Eingabe.
 
 ## 4. Einstellungsseite
 
