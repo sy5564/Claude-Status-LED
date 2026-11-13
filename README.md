@@ -22,7 +22,7 @@ An LED on an ESP shows what [Claude Code](https://claude.com/claude-code) is doi
 | Done | The answer is ready | fade green ↔ cyan, back to "Ready" after 60 s |
 | Error | The request failed | red, fast blinking |
 
-For each state you can choose color, animation (solid, pulse, blink, two-color fade or **rainbow** through all colors) and speed. The **"Show"** checkbox turns individual states off.
+For each state you can choose color, animation (solid, pulse, blink, two-color fade or **rainbow** through all colors) and speed. The **"Show"** checkbox turns individual states off. For **Error** you can set a timer after which the LED returns to "Ready" (0 = stays).
 
 System indicators: **purple pulsing** = setup mode · **purple fast blinking** = connecting to Wi-Fi · **purple slow blinking** = Wi-Fi lost, retrying · **orange, faster and faster** = button held for factory reset
 
@@ -101,7 +101,7 @@ Open `http://claude-led.local` (or the IP address) in your browser:
 
 - **Status:** current state, active sessions, Wi-Fi signal, uptime, firmware
 - **Brightness:** takes effect immediately
-- **Display per state:** on/off, color, animation, speed, preview
+- **Display per state:** on/off, color, animation, speed, preview, timer for "Error"
 - **Timing:** when "Done" returns to "Ready", auto-off after inactivity
 - **LED hardware:** type, pins, number of LEDs, color order, button
 - **Network:** device name, static IP, set up Wi-Fi again

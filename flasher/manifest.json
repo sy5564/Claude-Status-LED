@@ -1,6 +1,6 @@
 {
   "name": "Claude Status-LED",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "new_install_prompt_erase": true,
   "builds": [
     { "chipFamily": "ESP32",    "parts": [{ "path": "bin/esp32-factory.bin",   "offset": 0 }] },

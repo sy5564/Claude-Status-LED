@@ -22,7 +22,7 @@ Eine LED an einem ESP zeigt, was [Claude Code](https://claude.com/claude-code) g
 | Fertig | Die Antwort ist fertig | Farbverlauf grün ↔ türkis, nach 60 s wieder „Bereit“ |
 | Fehler | Die Anfrage ist fehlgeschlagen | rot, schnell blinkend |
 
-Für jeden Zustand stellst du Farbe, Animation (dauerhaft, pulsierend, blinkend, Farbverlauf mit 2 Farben oder **Regenbogen** durch alle Farben) und Tempo ein. Mit der Checkbox **„Anzeigen“** schaltest du einzelne Zustände ab.
+Für jeden Zustand stellst du Farbe, Animation (dauerhaft, pulsierend, blinkend, Farbverlauf mit 2 Farben oder **Regenbogen** durch alle Farben) und Tempo ein. Mit der Checkbox **„Anzeigen“** schaltest du einzelne Zustände ab. Für **Fehler** stellst du einen Timer ein, nach dem die LED wieder auf „Bereit“ wechselt (0 = bleibt).
 
 Systemanzeigen: **lila pulsierend** = Setup-Modus · **lila schnell blinkend** = verbindet mit WLAN · **lila langsam blinkend** = WLAN getrennt, versucht es weiter · **orange, immer schneller** = Knopf wird für den Reset gehalten
 
@@ -101,7 +101,7 @@ Nutze **nur eine** der beiden Varianten, sonst kommt jedes Ereignis doppelt an.
 
 - **Status:** aktueller Zustand, aktive Sessions, WLAN-Signal, Laufzeit, Firmware
 - **Helligkeit:** wirkt sofort
-- **Anzeige pro Zustand:** An/Aus, Farbe, Animation, Tempo, Vorschau
+- **Anzeige pro Zustand:** An/Aus, Farbe, Animation, Tempo, Vorschau, Timer für „Fehler“
 - **Zeiten:** wann „Fertig“ zu „Bereit“ wird, Auto-Aus nach Inaktivität
 - **LED-Hardware:** Typ, Pins, Anzahl, Farbreihenfolge, Knopf
 - **Netzwerk:** Gerätename, feste IP, WLAN neu einrichten
